@@ -4,6 +4,11 @@ import 'filter_item.dart';
 import './../utils/extensions/string_extensions.dart';
 
 class FilterDialog extends StatefulWidget {
+  final Function(Map<String, dynamic> filters) onSubmitFilters;
+  const FilterDialog({
+    Key key,
+    @required this.onSubmitFilters,
+  }) : super(key: key);
   @override
   _FilterDialogState createState() => _FilterDialogState();
 }
@@ -108,14 +113,82 @@ class _FilterDialogState extends State<FilterDialog> {
     });
   }
 
+  void _onClearAll() {
+    setState(
+      () {
+        _accordionFilterData.keys.map(
+          (e) {
+            _accordionFilterData[e]['selected'] = [];
+          },
+        );
+      },
+    );
+  }
+
+  bool _hasAFilterBeenSelected() {
+    return [..._accordionFilterData.keys].indexWhere(
+          (element) {
+            return _accordionFilterData[element]['selected'].length > 0;
+          },
+        ) >
+        -1;
+  }
+
+  void _submitFilters() {
+    Navigator.of(context).pop();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: _buildAppBar(context),
+      backgroundColor: const Color(0xFF1F1F1F),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF1F1F1F),
+        title: const Text('Sort and filter'),
+        centerTitle: true,
+        actions: [
+          Visibility(
+            child: TextButton.icon(
+              icon: const Text(
+                'Clear all',
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              label: const Icon(
+                Icons.close,
+                color: Colors.white,
+              ),
+              onPressed: _onClearAll,
+            ),
+            visible: _hasAFilterBeenSelected(),
+          )
+        ],
+        leading: InkWell(
+          child: Container(
+            decoration: const BoxDecoration(
+              borderRadius: const BorderRadius.all(
+                Radius.circular(20),
+              ),
+            ),
+            child: const Icon(
+              Icons.arrow_back,
+            ),
+          ),
+          onTap: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
+            Align(
+              child: const Text(
+                'Sort by',
+              ),
+              alignment: Alignment.centerLeft,
+            ),
             ...sortByList.map(
               (x) => _buildUpperFilterItem(x),
             ),
@@ -142,6 +215,22 @@ class _FilterDialogState extends State<FilterDialog> {
                       visible: _activeAccordions[e] == true,
                     ),
                   ],
+                ),
+              ),
+            ),
+            Container(
+              color: Colors.black,
+              child: Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                    onPressed: _submitFilters,
+                    child: const Text(
+                      'APPLY',
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -213,29 +302,6 @@ class _FilterDialogState extends State<FilterDialog> {
           }
         });
       },
-    );
-  }
-
-  AppBar _buildAppBar(BuildContext context) {
-    return AppBar(
-      backgroundColor: Color(0xFF3333),
-      title: Text('Sort and filter'),
-      centerTitle: true,
-      leading: InkWell(
-        child: Container(
-          decoration: const BoxDecoration(
-            borderRadius: const BorderRadius.all(
-              Radius.circular(20),
-            ),
-          ),
-          child: const Icon(
-            Icons.arrow_back,
-          ),
-        ),
-        onTap: () {
-          Navigator.pop(context);
-        },
-      ),
     );
   }
 }

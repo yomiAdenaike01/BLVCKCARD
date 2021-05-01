@@ -9,12 +9,24 @@ class ResturantList extends StatefulWidget {
 }
 
 class _ResturantListState extends State<ResturantList> {
+  Map<String, dynamic> _activeFilters = {};
+  void _onSubmitFilters(filters) {
+    setState(
+      () {
+        _activeFilters = filters;
+      },
+    );
+  }
+
   Future<bool> toggleFilters() {
     return showGeneralDialog(
-        context: context,
-        pageBuilder: (ctx, anim, anim2) {
-          return FilterDialog();
-        });
+      context: context,
+      pageBuilder: (ctx, anim, anim2) {
+        return FilterDialog(
+          onSubmitFilters: _onSubmitFilters,
+        );
+      },
+    );
   }
 
   @override

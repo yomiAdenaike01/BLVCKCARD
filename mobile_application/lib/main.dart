@@ -8,8 +8,13 @@ void main() {
       debugShowCheckedModeBanner: false,
       home: MainApp(),
       theme: ThemeData(
-        brightness: Brightness.light,
-      ),
+          primaryTextTheme: TextTheme(
+        title: TextStyle(),
+        button: TextStyle(),
+      ).apply(
+        bodyColor: Color.fromRGBO(136, 252, 254, 1),
+        displayColor: Colors.red,
+      )),
     ),
   );
 }

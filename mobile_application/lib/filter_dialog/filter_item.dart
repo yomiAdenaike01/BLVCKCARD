@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import './../utils/extensions/string_extensions.dart';
 
 class FilterItem extends StatelessWidget {
-  const FilterItem(
-      {Key key,
-      this.accordionFilterData,
-      this.activeAccordions,
-      this.currentKey,
-      this.onTapAccordion,
-      this.onClear})
-      : super(key: key);
+  const FilterItem({
+    Key key,
+    this.accordionFilterData,
+    this.activeAccordions,
+    this.currentKey,
+    this.onTapAccordion,
+    this.onClear,
+  }) : super(key: key);
 
   final Map<String, dynamic> accordionFilterData;
   final Map<String, bool> activeAccordions;
@@ -42,15 +42,15 @@ class FilterItem extends StatelessWidget {
                 ),
               ),
       ),
-      tileColor: _isOpen ? Colors.red : Colors.transparent,
+      tileColor: Color(0xFF121212),
       title: Text(
         currentKey.makePretty,
         style: const TextStyle(
           color: Colors.white,
         ),
       ),
-      leading: const Icon(
-        Icons.add,
+      leading: Icon(
+        _isOpen ? Icons.remove : Icons.add,
         color: Colors.white,
       ),
       onTap: () {
