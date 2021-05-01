@@ -18,15 +18,15 @@ class _FilterDialogState extends State<FilterDialog> {
   List<Map<String, dynamic>> sortByList = [
     {
       'label': 'Discount',
-      'icon': Icon(Icons.perm_device_information),
+      'icon': Icons.perm_device_information,
     },
     {
       'label': 'Nearest',
-      'icon': Icon(Icons.near_me),
+      'icon': Icons.near_me,
     },
     {
       'label': 'Most popular',
-      'icon': Icon(Icons.fire_hydrant),
+      'icon': Icons.fire_hydrant,
     }
   ];
   Map<String, bool> _activeAccordions = {
@@ -158,6 +158,7 @@ class _FilterDialogState extends State<FilterDialog> {
               label: const Icon(
                 Icons.close,
                 color: Colors.white,
+                size: 15,
               ),
               onPressed: _onClearAll,
             ),
@@ -183,14 +184,28 @@ class _FilterDialogState extends State<FilterDialog> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Align(
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              width: double.infinity,
               child: const Text(
                 'Sort by',
+                textAlign: TextAlign.left,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
-              alignment: Alignment.centerLeft,
             ),
-            ...sortByList.map(
-              (x) => _buildUpperFilterItem(x),
+            Padding(
+              padding: const EdgeInsets.all(7),
+              child: Column(
+                children: [
+                  ...sortByList.map(
+                    (x) => _buildUpperFilterItem(x),
+                  ),
+                ],
+              ),
             ),
             SizedBox(height: 30),
             ..._activeAccordions.keys.map(
@@ -240,16 +255,9 @@ class _FilterDialogState extends State<FilterDialog> {
     );
   }
 
-  CheckboxListTile _buildUpperFilterItem(Map<String, dynamic> x) {
-    return CheckboxListTile(
-      title: Text(
-        x['label'],
-        style: const TextStyle(
-          color: Colors.white,
-        ),
-      ),
-      value: _currentSortBy == x['label'],
-      onChanged: (val) {
+  Widget _buildUpperFilterItem(Map<String, dynamic> x) {
+    return InkWell(
+      onTap: () {
         setState(() {
           if (_currentSortBy == x['label']) {
             _currentSortBy = '';
@@ -258,6 +266,44 @@ class _FilterDialogState extends State<FilterDialog> {
           }
         });
       },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 8.0,
+          vertical: 10,
+        ),
+        child: Container(
+          height: 22,
+          decoration: const BoxDecoration(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(12),
+            ),
+          ),
+          child: Row(
+            children: [
+              Icon(
+                x['icon'],
+                color: Colors.white,
+                size: 15,
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Text(
+                x['label'],
+                style: const TextStyle(color: Colors.white),
+              ),
+              const Spacer(),
+              Visibility(
+                child: Icon(
+                  Icons.check,
+                  color: Colors.white,
+                ),
+                visible: _currentSortBy == x['label'],
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 
@@ -269,6 +315,7 @@ class _FilterDialogState extends State<FilterDialog> {
       child: Column(
         children: [
           Wrap(
+            spacing: 10,
             children: [
               ..._filterSelection.map(
                 (filterItem) => _buildMiniCheckboxItem(
@@ -283,25 +330,36 @@ class _FilterDialogState extends State<FilterDialog> {
     );
   }
 
-  CheckboxListTile _buildMiniCheckboxItem(filterItem, _filterSelectedItems) {
-    return CheckboxListTile(
-      title: Text(
+  Widget _buildMiniCheckboxItem(filterItem, _filterSelectedItems) {
+    int _index = _filterSelectedItems.indexOf(filterItem);
+    bool _isSelected = _index > -1;
+    return TextButton.icon(
+      style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(
+        _isSelected ? Colors.brown : Colors.transparent,
+      )),
+      onPressed: () {
+        setState(
+          () {
+            if (!_isSelected) {
+              _filterSelectedItems.add(filterItem);
+            } else {
+              _filterSelectedItems.removeAt(_index);
+            }
+          },
+        );
+      },
+      icon: Icon(
+        _isSelected ? Icons.check : Icons.add,
+        size: 16,
+        color: Colors.white,
+      ),
+      label: Text(
         filterItem.toString().makePretty,
         style: const TextStyle(
           color: Colors.white,
         ),
       ),
-      value: _filterSelectedItems.indexOf(filterItem) > -1,
-      onChanged: (e) {
-        setState(() {
-          int _index = _filterSelectedItems.indexOf(filterItem);
-          if (_index == -1) {
-            _filterSelectedItems.add(filterItem);
-          } else {
-            _filterSelectedItems.removeAt(_index);
-          }
-        });
-      },
     );
   }
 }

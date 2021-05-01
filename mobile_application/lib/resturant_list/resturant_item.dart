@@ -40,15 +40,17 @@ class ResturantListItem extends StatelessWidget {
                     'Akoto',
                     style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 32,
+                      fontSize: 25,
                       fontWeight: FontWeight.bold,
                     ),
+                  ),
+                  const SizedBox(
+                    height: 6,
                   ),
                   const Text(
                     '30% off full menu',
                     style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 17,
                     ),
                   ),
                   Column(

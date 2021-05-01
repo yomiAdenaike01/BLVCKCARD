@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import 'resturant_list/resturant_list.dart';
 
@@ -7,14 +8,7 @@ void main() {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MainApp(),
-      theme: ThemeData(
-          primaryTextTheme: TextTheme(
-        title: TextStyle(),
-        button: TextStyle(),
-      ).apply(
-        bodyColor: Color.fromRGBO(136, 252, 254, 1),
-        displayColor: Colors.red,
-      )),
+      theme: ThemeData(fontFamily: 'Acumin'),
     ),
   );
 }
@@ -32,7 +26,7 @@ class _MainAppState extends State<MainApp> {
       'widget': ResturantList(),
     },
     {
-      'icon': Icons.hearing_outlined,
+      'icon': Icons.favorite_border_outlined,
       'label': 'Saved',
     },
     {
@@ -44,6 +38,18 @@ class _MainAppState extends State<MainApp> {
       'label': 'Profile',
     }
   ];
+  Future<dynamic> _requestPermissions() async {
+    Map<Permission, PermissionStatus> statuses = await [
+      Permission.location,
+      Permission.storage,
+    ].request();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _requestPermissions();
+  }
 
   @override
   Widget build(BuildContext context) {

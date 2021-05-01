@@ -23,6 +23,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  google_maps_flutter: ^2.0.3
+  permission_handler: ^7.1.0
+
+
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -69,12 +73,13 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+    - family: Acumin
+      fonts:
+        - asset: assets/fonts/Acumin-BditPro.otf
+        - asset: assets/fonts/Acumin-BdPro.otf
+        - asset: assets/fonts/Acumin-itPro.otf
+        - asset: assets/fonts/Acumin-RPro.otf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
