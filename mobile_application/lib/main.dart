@@ -3,6 +3,7 @@ import 'package:mobile_application/screens/invite/invite.dart';
 import 'package:mobile_application/screens/profile/profile.dart';
 import 'package:mobile_application/screens/saved/saved.dart';
 import 'package:location/location.dart';
+import 'package:mobile_application/utils/constants.dart';
 import './screens/directory/directory.dart';
 
 void main() {
@@ -10,23 +11,26 @@ void main() {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MainApp(),
-      theme: ThemeData(
-        fontFamily: 'Acumin',
-        scaffoldBackgroundColor: Color(0xFF121212),
-        textTheme: TextTheme(
-          bodyText1: TextStyle(
-            color: Colors.white,
-          ),
-          bodyText2: TextStyle(
-            color: Colors.white,
-          ),
-          button: TextStyle(
-            color: Colors.white,
+      theme: ThemeData.dark().copyWith(
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            primary: Colors.white,
           ),
         ),
-        iconTheme: IconThemeData(
-          size: 17,
-          color: Colors.white,
+        textTheme: TextTheme(
+          bodyText1: const TextStyle(
+            height: kLineHeight,
+          ),
+          bodyText2: const TextStyle(
+            height: kLineHeight,
+          ),
+        ),
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          backgroundColor: kDeepBlack,
+          selectedItemColor: Colors.white70,
+          unselectedItemColor: Colors.white.withOpacity(.7),
+          selectedIconTheme: IconThemeData(color: Colors.white),
+          showUnselectedLabels: true,
         ),
       ),
     ),
