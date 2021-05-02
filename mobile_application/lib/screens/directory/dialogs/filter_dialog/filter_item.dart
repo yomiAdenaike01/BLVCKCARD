@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../utils/extensions/string_extensions.dart';
+import '../../../../utils/extensions/string_extensions.dart';
 
 class FilterItem extends StatelessWidget {
   const FilterItem({

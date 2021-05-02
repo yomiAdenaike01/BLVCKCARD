@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+export './theme.dart';
 
 const kGray = Color(0xFF6E6E6E);
 const kBlack = Color(0xFFF333333);
@@ -25,35 +26,4 @@ const kCircleRadius = BorderRadius.all(
   ),
 );
 const kIconSize = 15.0;
-ThemeData kThemeData = ThemeData.dark().copyWith(
-  primaryIconTheme: IconThemeData(
-    size: kIconSize,
-  ),
-  accentIconTheme: IconThemeData(
-    size: kIconSize,
-  ),
-  iconTheme: IconThemeData(
-    size: kIconSize,
-    color: Colors.white,
-  ),
-  textButtonTheme: TextButtonThemeData(
-    style: TextButton.styleFrom(
-      primary: Colors.white,
-    ),
-  ),
-  textTheme: TextTheme(
-    bodyText1: const TextStyle(
-      height: kLineHeight,
-    ),
-    bodyText2: const TextStyle(
-      height: kLineHeight,
-    ),
-  ),
-  bottomNavigationBarTheme: BottomNavigationBarThemeData(
-    backgroundColor: kDeepBlack,
-    selectedItemColor: Colors.white70,
-    unselectedItemColor: Colors.white.withOpacity(.7),
-    selectedIconTheme: IconThemeData(color: Colors.white),
-    showUnselectedLabels: true,
-  ),
-);
+const kDebounceDuration = 500;

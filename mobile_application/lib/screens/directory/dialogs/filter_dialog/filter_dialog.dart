@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'filter_item.dart';
-import '../../../utils/extensions/string_extensions.dart';
+import '../../../../utils/extensions/string_extensions.dart';
 
 class FilterDialog extends StatefulWidget {
   final Function(Map<String, dynamic> filters) onSubmitFilters;

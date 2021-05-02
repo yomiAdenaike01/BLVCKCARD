@@ -75,6 +75,7 @@ class _MainAppState extends State<MainApp> {
             (e) => BottomNavigationBarItem(
               icon: Icon(
                 e['icon'],
+                size: kIconSize,
               ),
               label: e['label'],
               backgroundColor: Colors.black,
