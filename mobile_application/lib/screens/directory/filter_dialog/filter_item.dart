@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './../utils/extensions/string_extensions.dart';
+import '../../../utils/extensions/string_extensions.dart';
 
 class FilterItem extends StatelessWidget {
   const FilterItem({
@@ -27,9 +27,6 @@ class FilterItem extends StatelessWidget {
             ? TextButton(
                 child: Text(
                   'Clear',
-                  style: const TextStyle(
-                    color: Colors.white,
-                  ),
                 ),
                 onPressed: () {
                   onClear(currentKey);
@@ -37,21 +34,14 @@ class FilterItem extends StatelessWidget {
               )
             : Text(
                 '${_selectedItems.length} selected',
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
               ),
       ),
       tileColor: Color(0xFF121212),
       title: Text(
         currentKey.makePretty,
-        style: const TextStyle(
-          color: Colors.white,
-        ),
       ),
       leading: Icon(
         _isOpen ? Icons.remove : Icons.add,
-        color: Colors.white,
       ),
       onTap: () {
         onTapAccordion(currentKey);

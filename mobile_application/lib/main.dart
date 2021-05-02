@@ -1,14 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:permission_handler/permission_handler.dart';
-
-import 'resturant_list/resturant_list.dart';
+import 'package:mobile_application/screens/invite/invite.dart';
+import 'package:mobile_application/screens/profile/profile.dart';
+import 'package:mobile_application/screens/saved/saved.dart';
+import 'package:location/location.dart';
+import './screens/directory/directory.dart';
 
 void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MainApp(),
-      theme: ThemeData(fontFamily: 'Acumin'),
+      theme: ThemeData(
+        fontFamily: 'Acumin',
+        scaffoldBackgroundColor: Color(0xFF121212),
+        textTheme: TextTheme(
+          bodyText1: TextStyle(
+            color: Colors.white,
+          ),
+          bodyText2: TextStyle(
+            color: Colors.white,
+          ),
+          button: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+        iconTheme: IconThemeData(
+          size: 17,
+          color: Colors.white,
+        ),
+      ),
     ),
   );
 }
@@ -19,58 +39,60 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  List<Map<String, dynamic>> bottomNavItemsMap = [
+  int _currentIndex = 0;
+  final Location location = Location();
+  List<Map<String, dynamic>> _bottomNavItemsMap = [
     {
-      'icon': Icons.kitchen,
+      'icon': Icons.restaurant,
       'label': 'Resturants',
-      'widget': ResturantList(),
+      'widget': ResturantDirectory(),
     },
     {
       'icon': Icons.favorite_border_outlined,
       'label': 'Saved',
+      'widget': Saved()
     },
     {
       'icon': Icons.inbox,
-      'label': 'Inbox',
+      'label': 'Invite',
+      'widget': Invite(),
     },
     {
       'icon': Icons.person,
       'label': 'Profile',
+      'widget': Profile(),
     }
   ];
-  Future<dynamic> _requestPermissions() async {
-    Map<Permission, PermissionStatus> statuses = await [
-      Permission.location,
-      Permission.storage,
-    ].request();
-  }
 
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
-    _requestPermissions();
+    location.requestPermission();
   }
 
   @override
   Widget build(BuildContext context) {
-    int cIndex = 0;
-    Widget currentComponent = bottomNavItemsMap[cIndex]['widget'];
+    Widget _currentScreen = _bottomNavItemsMap[_currentIndex]['widget'];
 
     return Scaffold(
       body: SafeArea(
-        child: currentComponent,
+        child: _currentScreen,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: cIndex,
+        currentIndex: _currentIndex,
+        showUnselectedLabels: true,
         onTap: (int index) {
           setState(() {
-            cIndex = index;
+            _currentIndex = index;
           });
         },
         items: [
-          ...bottomNavItemsMap.map(
+          ..._bottomNavItemsMap.map(
             (e) => BottomNavigationBarItem(
-              icon: Icon(e['icon']),
+              icon: Icon(
+                e['icon'],
+              ),
               label: e['label'],
               backgroundColor: Colors.black,
             ),

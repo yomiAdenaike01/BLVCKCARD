@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'filter_item.dart';
-import './../utils/extensions/string_extensions.dart';
+import '../../../utils/extensions/string_extensions.dart';
 
 class FilterDialog extends StatefulWidget {
   final Function(Map<String, dynamic> filters) onSubmitFilters;
@@ -151,14 +151,9 @@ class _FilterDialogState extends State<FilterDialog> {
             child: TextButton.icon(
               icon: const Text(
                 'Clear all',
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
               ),
               label: const Icon(
                 Icons.close,
-                color: Colors.white,
-                size: 15,
               ),
               onPressed: _onClearAll,
             ),
@@ -191,7 +186,6 @@ class _FilterDialogState extends State<FilterDialog> {
                 'Sort by',
                 textAlign: TextAlign.left,
                 style: const TextStyle(
-                  color: Colors.white,
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
                 ),
@@ -243,7 +237,6 @@ class _FilterDialogState extends State<FilterDialog> {
                     onPressed: _submitFilters,
                     child: const Text(
                       'APPLY',
-                      style: const TextStyle(color: Colors.white),
                     ),
                   ),
                 ),
@@ -282,7 +275,6 @@ class _FilterDialogState extends State<FilterDialog> {
             children: [
               Icon(
                 x['icon'],
-                color: Colors.white,
                 size: 15,
               ),
               const SizedBox(
@@ -290,13 +282,11 @@ class _FilterDialogState extends State<FilterDialog> {
               ),
               Text(
                 x['label'],
-                style: const TextStyle(color: Colors.white),
               ),
               const Spacer(),
               Visibility(
                 child: Icon(
                   Icons.check,
-                  color: Colors.white,
                 ),
                 visible: _currentSortBy == x['label'],
               )
@@ -352,13 +342,9 @@ class _FilterDialogState extends State<FilterDialog> {
       icon: Icon(
         _isSelected ? Icons.check : Icons.add,
         size: 16,
-        color: Colors.white,
       ),
       label: Text(
         filterItem.toString().makePretty,
-        style: const TextStyle(
-          color: Colors.white,
-        ),
       ),
     );
   }
