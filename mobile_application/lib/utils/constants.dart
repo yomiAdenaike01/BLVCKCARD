@@ -10,6 +10,7 @@ const kWhiteOpacity = .3;
 const kLineHeight = 1.6;
 const kBorderRadiusData = 6.0;
 const kWhiteBackground = Colors.white24;
+const kSecondaryColour = Colors.brown;
 const kBorderRadius = BorderRadius.all(
   Radius.circular(
     kBorderRadiusData,

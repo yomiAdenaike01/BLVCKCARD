@@ -13,7 +13,7 @@ class SearchDialog extends StatefulWidget {
 
 class _SearchDialogState extends State<SearchDialog> {
   TextEditingController _controller = TextEditingController();
-  Timer _dbounce = null;
+  Timer _dbounce;
   @override
   void dispose() {
     _controller.dispose();

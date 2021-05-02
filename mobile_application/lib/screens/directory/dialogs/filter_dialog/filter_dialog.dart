@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_application/utils/constants.dart';
 
 import 'filter_item.dart';
 import '../../../../utils/extensions/string_extensions.dart';
@@ -141,9 +142,7 @@ class _FilterDialogState extends State<FilterDialog> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1F1F1F),
       appBar: AppBar(
-        backgroundColor: const Color(0xFF1F1F1F),
         title: const Text('Sort and filter'),
         centerTitle: true,
         actions: [
@@ -326,7 +325,7 @@ class _FilterDialogState extends State<FilterDialog> {
     return TextButton.icon(
       style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all(
-        _isSelected ? Colors.brown : Colors.transparent,
+        _isSelected ? kSecondaryColour : Colors.transparent,
       )),
       onPressed: () {
         setState(
