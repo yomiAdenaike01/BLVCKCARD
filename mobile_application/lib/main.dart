@@ -11,28 +11,7 @@ void main() {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MainApp(),
-      theme: ThemeData.dark().copyWith(
-        textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-            primary: Colors.white,
-          ),
-        ),
-        textTheme: TextTheme(
-          bodyText1: const TextStyle(
-            height: kLineHeight,
-          ),
-          bodyText2: const TextStyle(
-            height: kLineHeight,
-          ),
-        ),
-        bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          backgroundColor: kDeepBlack,
-          selectedItemColor: Colors.white70,
-          unselectedItemColor: Colors.white.withOpacity(.7),
-          selectedIconTheme: IconThemeData(color: Colors.white),
-          showUnselectedLabels: true,
-        ),
-      ),
+      theme: kThemeData,
     ),
   );
 }

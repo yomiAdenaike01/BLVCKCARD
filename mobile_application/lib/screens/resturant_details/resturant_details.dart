@@ -53,6 +53,52 @@ class ResturantDetails extends StatelessWidget {
             ),
           ),
           Positioned(
+            top: 20,
+            left: 0,
+            right: 0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  child: IconButton(
+                      icon: Icon(Icons.arrow_left),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      }),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Container(
+                        decoration: kRoundedWhiteButtonBackground,
+                        child: TextButton.icon(
+                          onPressed: () {},
+                          icon: Icon(Icons.sort),
+                          label: Text('Menu'),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      decoration: const BoxDecoration(
+                        color: kWhiteBackground,
+                        borderRadius: kCircleRadius,
+                      ),
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.favorite_border_outlined,
+                          size: kIconSize,
+                        ),
+                        onPressed: () {},
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
+          Positioned(
             child: Center(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
