@@ -56,7 +56,8 @@ class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
-    Widget _currentScreen = _bottomNavItemsMap[_currentIndex]['widget'];
+    var _currentMapItem = _bottomNavItemsMap[_currentIndex];
+    Widget _currentScreen = _currentMapItem['widget'];
 
     return Scaffold(
       body: SafeArea(
@@ -75,7 +76,6 @@ class _MainAppState extends State<MainApp> {
             (e) => BottomNavigationBarItem(
               icon: Icon(
                 e['icon'],
-                size: kIconSize,
               ),
               label: e['label'],
               backgroundColor: Colors.black,

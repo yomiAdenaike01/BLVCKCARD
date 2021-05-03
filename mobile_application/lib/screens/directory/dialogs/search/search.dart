@@ -53,6 +53,7 @@ class _SearchDialogState extends State<SearchDialog> {
           Container(
             width: MediaQuery.of(context).size.width / 1.3,
             child: TextField(
+              autofocus: true,
               controller: _controller,
               decoration: InputDecoration(
                 prefixIcon: Icon(

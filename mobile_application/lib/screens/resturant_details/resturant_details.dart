@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_application/screens/directory/redeem/redeem_dialog.dart';
-import 'package:mobile_application/utils/constants.dart';
-import 'package:mobile_application/utils/helpers.dart';
+
+import '../directory/dialogs/redeem/redeem_dialog.dart';
+import '../../utils/constants.dart';
+import '../../utils/helpers.dart';
 import "../../utils/extensions/string_extensions.dart";
 
 Map<int, String> days = {

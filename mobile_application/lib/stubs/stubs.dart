@@ -13,4 +13,8 @@ class Stubs {
       'address': "'Flat 2, 157 Castle Road, Bedford,MK40 3RT'",
     }
   ];
+
+  List<Map<String, dynamic>> userList = [
+    {'avatar': '', 'name': '', 'invited': false}
+  ];
 }

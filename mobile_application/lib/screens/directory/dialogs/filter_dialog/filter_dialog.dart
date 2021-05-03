@@ -144,6 +144,7 @@ class _FilterDialogState extends State<FilterDialog> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sort and filter'),
+        backgroundColor: kDeepBlack,
         centerTitle: true,
         actions: [
           Visibility(
@@ -177,6 +178,8 @@ class _FilterDialogState extends State<FilterDialog> {
       ),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.max,
           children: [
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -225,6 +228,9 @@ class _FilterDialogState extends State<FilterDialog> {
                   ],
                 ),
               ),
+            ),
+            SizedBox(
+              height: 20,
             ),
             Container(
               color: Colors.black,
