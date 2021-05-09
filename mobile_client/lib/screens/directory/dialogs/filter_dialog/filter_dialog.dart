@@ -229,20 +229,14 @@ class _FilterDialogState extends State<FilterDialog> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
             Container(
               color: Colors.black,
-              child: Padding(
-                padding: const EdgeInsets.all(18.0),
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: TextButton(
-                    onPressed: _submitFilters,
-                    child: const Text(
-                      'APPLY',
-                    ),
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: _submitFilters,
+                  child: const Text(
+                    'APPLY',
                   ),
                 ),
               ),

@@ -49,7 +49,6 @@ class _MainAppState extends State<MainApp> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     location.requestPermission();
   }
@@ -76,6 +75,7 @@ class _MainAppState extends State<MainApp> {
             (e) => BottomNavigationBarItem(
               icon: Icon(
                 e['icon'],
+                size: kIconSize,
               ),
               label: e['label'],
               backgroundColor: Colors.black,

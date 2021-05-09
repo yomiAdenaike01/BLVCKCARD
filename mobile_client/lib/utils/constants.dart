@@ -26,5 +26,5 @@ const kCircleRadius = BorderRadius.all(
     kCircleRadiusData,
   ),
 );
-const kIconSize = 15.0;
+const kIconSize = 16.0;
 const kDebounceDuration = 500;

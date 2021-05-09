@@ -25,6 +25,8 @@ dependencies:
     sdk: flutter
   google_maps_flutter: ^2.0.3
   location: ^3.0.0
+  transparent_image: ^2.0.0
+
 
 
 
