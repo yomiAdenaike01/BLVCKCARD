@@ -1,0 +1,7 @@
+.register_page {
+    @apply overflow-x-hidden;
+}
+.register_page h1 {
+    @apply uppercase my-3 tracking-wider text-gray-700;
+
+}

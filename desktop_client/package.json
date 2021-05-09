@@ -11,11 +11,12 @@
     "@types/node": "^15.0.2",
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.3",
-    "autoprefixer": "10.x",
+    "@yomiadenaike/date-lib": "^2.0.2",
+    "autoprefixer": "9",
     "axios": "^0.21.1",
     "cross-env": "7.x",
     "npm-run-all": "4.x",
-    "postcss": "8.x",
+    "postcss": "7",
     "postcss-cli": "8.x",
     "postcss-preset-env": "6.x",
     "react": "^17.0.2",
@@ -23,11 +24,11 @@
     "react-icons": "^4.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
-    "tailwindcss": "2.x",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "typescript": "4.x"
   },
   "scripts": {
-    "start": "run-p watch:css react-scripts:start",
+    "start": "craco start",
     "build": "run-s build:css react-scripts:build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -52,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "@craco/craco": "^6.1.2",
     "@types/axios": "^0.14.0",
     "@types/react-icons": "^3.0.0",
     "@types/react-router-dom": "^5.1.7",
