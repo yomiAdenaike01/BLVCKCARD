@@ -72,7 +72,14 @@ const Register = () => {
       let res: JSX.Element = <></>;
       switch (x.inputType) {
         case "input":
-          res = <input className="input" type={x.type} placeholder={x.label} />;
+          res = (
+            <input
+              min={1}
+              className="input"
+              type={x.type}
+              placeholder={x.label}
+            />
+          );
           break;
         case "select":
           res = (
